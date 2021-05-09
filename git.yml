@@ -1,0 +1,16 @@
+- hosts: target
+  become: true
+  roles:
+    - name: install docker
+      role: docker
+    - name: install autofs
+      role: cmprescott.autofs
+      autofs_indirect_maps:
+        - name: "auto.nfs-nas"
+          path: /mnt/nfs
+          mark: "nfs mount from fs1"
+          options: "--timeout=60"
+          mounts:
+            - name: "backup"
+              fstype: "nfs,rw"
+              url: "fs1.tateishi:/volume1/nfs/gitbucket-test-backup"
