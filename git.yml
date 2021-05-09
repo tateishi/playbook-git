@@ -1,3 +1,4 @@
+# ansible-galaxy install cmprescott.autofs
 - hosts: target
   become: true
   roles:
