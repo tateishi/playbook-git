@@ -30,5 +30,6 @@
       become: true
       cron:
         name: backup
+        minute: "0"
         hour: "2"
         job: "bash /home/ubuntu/wks/docker-gitbucket/bin/backup.sh"
