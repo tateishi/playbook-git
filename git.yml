@@ -14,3 +14,21 @@
             - name: "backup"
               fstype: "nfs,rw"
               url: "fs1.tateishi:/volume1/nfs/gitbucket-test-backup"
+
+- hosts: target
+  tasks:
+    - name: make wks directory
+      file:
+        path: ~/wks
+        state: directory
+    - name: checkout docker-gitbucket repository
+      git:
+        repo: https://github.com/tateishi/docker-gitbucket.git
+        dest: ~/wks/docker-gitbucket
+
+    - name: crontab backup
+      become: true
+      cron:
+        name: backup
+        hour: "2"
+        job: "bash /home/ubuntu/wks/docker-gitbucket/bin/backup.sh"
