@@ -14,7 +14,7 @@
           mounts:
             - name: "backup"
               fstype: "nfs,rw"
-              url: "fs1.tateishi:/volume1/nfs/gitbucket-test-backup"
+              url: "fs1.tateishi:/volume1/nfs/gitbucket-backup"
 
 - hosts: target
   tasks:
