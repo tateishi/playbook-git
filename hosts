@@ -1,2 +1,5 @@
-[target]
-git
+# -*- mode: yaml -*-
+
+target:
+  hosts:
+    git:
